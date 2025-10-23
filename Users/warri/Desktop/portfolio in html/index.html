@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ujjwal Kumar | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <h1 class="nav-logo">UK</h1>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="home">
+    <div class="hero-content">
+      <h1 data-aos="fade-down">👨‍💻 Ujjwal Kumar</h1>
+      <p data-aos="fade-up">AI & Full Stack Developer | Generative AI Enthusiast</p>
+      <div class="hero-buttons">
+        <a href="resume/genAi.pdf" download class="btn primary">📄 Download Resume</a>
+        <a href="#contact" class="btn secondary">Get In Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          I am a B.Tech Computer Science student passionate about building smart digital experiences using
+          Python, React, and Generative AI. I aim to create innovative solutions that connect technology and people.
+        </p>
+        <p>
+          With a strong foundation in full-stack development and AI technologies, I specialize in creating
+          user-centric applications that leverage the latest advancements in machine learning and web technologies.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <h3>3+</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="stat">
+          <h3>2+</h3>
+          <p>Years Experience</p>
+        </div>
+        <div class="stat">
+          <h3>AI/ML</h3>
+          <p>Specialization</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills & Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Frontend</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Backend</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Express</span>
+          <span class="skill-tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>AI/ML</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Generative AI</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Gemini API</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" data-aos="fade-up">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">🌿</div>
+        <h3>Virtual Herbal Garden</h3>
+        <p>Interactive herbal garden platform using MERN + Generative AI. Features include plant identification, herbal remedies, and AI-powered recommendations.</p>
+        <div class="project-tech">
+          <span>React</span>
+          <span>Node.js</span>
+          <span>MongoDB</span>
+          <span>Generative AI</span>
+        </div>
+        <div class="project-links">
+          <a href="https://aushadiveda.netlify.app/" target="_blank" class="btn small">Live Demo</a>
+          <a href="#" class="btn small secondary">Source Code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🤖</div>
+        <h3>AI Based Chatbot</h3>
+        <p>Gemini-powered health assistant providing Ayurvedic guidance. Offers personalized health recommendations based on user symptoms.</p>
+        <div class="project-tech">
+          <span>Streamlit</span>
+          <span>Python</span>
+          <span>Gemini API</span>
+          <span>AI/ML</span>
+        </div>
+        <div class="project-links">
+          <a href="https://auashadivedas.streamlit.app/" target="_blank" class="btn small">Live Demo</a>
+          <a href="#" class="btn small secondary">Source Code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🌱</div>
+        <h3>Plant Identification</h3>
+        <p>AI model to identify plants using computer vision. Upload images and get instant plant identification with care instructions.</p>
+        <div class="project-tech">
+          <span>Streamlit</span>
+          <span>Python</span>
+          <span>TensorFlow</span>
+          <span>Computer Vision</span>
+        </div>
+        <div class="project-links">
+          <a href="https://plant-identification-chatbot.streamlit.app/" target="_blank" class="btn small">Live Demo</a>
+          <a href="#" class="btn small secondary">Source Code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="Your Name" value="Ujjwal Kumar" required />
+      <input type="email" id="email" placeholder="Your Email" value="UJJWALKR7449@GMAIL.COM" required />
+      <input type="tel" id="phone" placeholder="Your Phone Number" value="+91 7979760802" required />
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <p id="form-status"></p>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Ujjwal Kumar</h3>
+        <p>AI & Full Stack Developer passionate about creating innovative solutions.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-links">
+          <a href="https://github.com" target="_blank">GitHub</a>
+          <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a href="mailto:ujjwalkr7449@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Ujjwal Kumar | Made with 💻 & ❤️</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 320px;
+    }
+
+    .contact-form h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #25D366;
+    }
+
+    .contact-form button {
+      background: #25D366;
+      color: white;
+      width: 100%;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: #1ebe5a;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="contact-form" id="whatsappForm">
+    <h2>Contact Us</h2>
+
+    <label>Name</label>
+    <input type="text" id="name" placeholder="Your name" required>
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Your email" required>
+
+    <label>Message</label>
+    <textarea id="message" rows="3" placeholder="Type your message..." required></textarea>
+
+    <button type="submit">Send on WhatsApp</button>
+  </form>
+
+  <script>
+    document.getElementById('whatsappForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      // 👇 Replace with your own phone number (international format)
+      const phoneNumber = "+917979760802"; // Example: India +91 -> 91 + number
+
+      // Collect data
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Create WhatsApp message
+      const whatsappMessage = `Hello, I am *${name}* (%20${email}%20)%0A%0A${message}`;
+
+      // Create WhatsApp URL
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+        "Hello, I am " + name + " (" + email + ")\n\n" + message
+      )}`;
+
+      // Open WhatsApp
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+
+</body>
+</html>
