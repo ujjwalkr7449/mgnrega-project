@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mgnrega-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        value: mongodb://localhost:27017/mgnrega_sample  # Replace with your actual MongoDB URI
+      - key: PORT
+        value: 5000
