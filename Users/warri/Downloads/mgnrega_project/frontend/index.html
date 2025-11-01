@@ -1,0 +1,120 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our Voice, Our Rights — MGNREGA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-sky-50 min-h-screen p-4">
+  <div class="max-w-3xl mx-auto">
+    <header class="text-center mb-4">
+      <h1 class="text-2xl font-bold text-sky-800">हमारी आवाज़, हमारे अधिकार</h1>
+      <p class="text-sm">अपने जिले का MGNREGA प्रदर्शन देखें — आसान भाषा और चार्ट</p>
+    </header>
+
+    <div class="flex gap-2 justify-center mb-4">
+      <select id="stateSelect" class="p-2 rounded border">
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+      </select>
+
+      <select id="districtSelect" class="p-2 rounded border">
+        <!-- populated by JS -->
+      </select>
+
+      <button id="showBtn" class="bg-sky-700 text-white p-2 rounded">दिखाएँ</button>
+    </div>
+
+    <div id="summary" class="bg-white rounded shadow p-4 mb-4">
+      <div id="summaryText" class="text-center text-lg">जिला चुनें या लोकेशन से पहचान करें</div>
+      <div class="flex justify-center mt-2">
+        <button id="detectBtn" class="bg-green-600 text-white px-3 py-1 rounded">मेरा जिला पहचानो (GPS)</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded shadow p-4">
+      <canvas id="mainChart" height="160"></canvas>
+    </div>
+  </div>
+
+  <script>
+  const FRONTEND_API_BASE = "http://localhost:5000/api"; // change when deployed
+
+  async function populateDistricts() {
+    // for demo, districts are read from sample JSON embedded
+    const districts = ["Lucknow","Varanasi","Allahabad","Kanpur Nagar","Agra"];
+    const sel = document.getElementById("districtSelect");
+    sel.innerHTML = districts.map(d => `<option value="${d}">${d}</option>`).join("");
+  }
+
+  async function loadDataForDistrict(district) {
+    try {
+      const res = await fetch(`${FRONTEND_API_BASE}/district/${encodeURIComponent(district)}`);
+      if(!res.ok) throw new Error("Network response not ok");
+      const data = await res.json();
+      if(!data || data.length===0) {
+        document.getElementById("summaryText").innerText = "डेटा उपलब्ध नहीं है।";
+        return;
+      }
+      document.getElementById("summaryText").innerText = `${district} — नवीनतम: ${data[0].month || '—'}`;
+      // sort by month assuming 'month' in YYYY-MM or similar
+      const sorted = data.slice().reverse();
+      const labels = sorted.map(r=>r.month);
+      const values = sorted.map(r=>r.persons_worked || r.households_worked || 0);
+
+      const ctx = document.getElementById('mainChart').getContext('2d');
+      if(window._mChart) window._mChart.destroy();
+      window._mChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{ label: 'लोगों की संख्या (persons worked)', data: values }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } }
+        }
+      });
+    } catch (e) {
+      console.error(e);
+      document.getElementById("summaryText").innerText = "डेटा लोड करने में समस्या हुई। (API डाउन?)";
+    }
+  }
+
+  document.getElementById("showBtn").addEventListener("click", ()=>{
+    const d = document.getElementById("districtSelect").value;
+    loadDataForDistrict(d);
+  });
+
+  document.getElementById("detectBtn").addEventListener("click", ()=>{
+    if(!navigator.geolocation) {
+      alert("GPS उपलब्ध नहीं");
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(async (pos)=>{
+      const {latitude, longitude} = pos.coords;
+      // Use Nominatim reverse geocode (note: deployment needs CORS handling)
+      try {
+        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+        const j = await res.json();
+        const district = j.address && (j.address.county || j.address.state_district || j.address.city_district || j.address.district);
+        if(district) {
+          // set in UI and load
+          const sel = document.getElementById("districtSelect");
+          for(const opt of sel.options){ if(opt.value.toLowerCase().includes(district.toLowerCase()) ){ opt.selected=true; break; } }
+          loadDataForDistrict(sel.value);
+        } else {
+          alert("जिला पहचान में विफल");
+        }
+      } catch(err) {
+        alert("लोकेशन सर्विस असमर्थ: " + err.message);
+      }
+    }, (err)=>{ alert("GPS अनुमति नहीं दी गई"); });
+  });
+
+  populateDistricts();
+  </script>
+</body>
+</html>

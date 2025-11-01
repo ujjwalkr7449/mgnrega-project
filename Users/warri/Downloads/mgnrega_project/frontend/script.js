@@ -1,0 +1,1 @@
+// If you want to separate JS, index.html already includes necessary code for demo.

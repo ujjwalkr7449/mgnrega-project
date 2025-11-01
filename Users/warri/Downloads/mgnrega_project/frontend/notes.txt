@@ -1,0 +1,1 @@
+Open frontend/index.html and edit FRONTEND_API_BASE in the <script> section to point to your backend URL if not running on localhost:5000

@@ -1,0 +1,50 @@
+[
+  {
+    "state_name": "Uttar Pradesh",
+    "district_name": "Lucknow",
+    "month": "2025-01",
+    "households_worked": 12000,
+    "persons_worked": 24000,
+    "total_expenditure": 5000000
+  },
+  {
+    "state_name": "Uttar Pradesh",
+    "district_name": "Lucknow",
+    "month": "2025-02",
+    "households_worked": 11000,
+    "persons_worked": 22000,
+    "total_expenditure": 4800000
+  },
+  {
+    "state_name": "Uttar Pradesh",
+    "district_name": "Lucknow",
+    "month": "2025-03",
+    "households_worked": 9000,
+    "persons_worked": 18000,
+    "total_expenditure": 3600000
+  },
+  {
+    "state_name": "Uttar Pradesh",
+    "district_name": "Varanasi",
+    "month": "2025-01",
+    "households_worked": 8000,
+    "persons_worked": 16000,
+    "total_expenditure": 3200000
+  },
+  {
+    "state_name": "Uttar Pradesh",
+    "district_name": "Varanasi",
+    "month": "2025-02",
+    "households_worked": 8500,
+    "persons_worked": 17000,
+    "total_expenditure": 3400000
+  },
+  {
+    "state_name": "Uttar Pradesh",
+    "district_name": "Agra",
+    "month": "2025-01",
+    "households_worked": 7000,
+    "persons_worked": 14000,
+    "total_expenditure": 2800000
+  }
+]
